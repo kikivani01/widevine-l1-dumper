@@ -17,7 +17,8 @@ PYTHON_VERSION=$(python3 --version | awk '{print $2}')
 echo "✓ Python $PYTHON_VERSION found"
 
 # Check ADB
-echo "\n[2/5] Checking ADB installation..."
+echo ""
+echo "[2/5] Checking ADB installation..."
 if ! command -v adb &> /dev/null; then
     echo "⚠ Warning: ADB not found in PATH"
     echo "  Please install Android SDK Platform Tools"
@@ -30,7 +31,8 @@ else
 fi
 
 # Create virtual environment (optional)
-echo "\n[3/5] Setting up Python environment..."
+echo ""
+echo "[3/5] Setting up Python environment..."
 if [ ! -d "venv" ]; then
     echo "Creating virtual environment..."
     python3 -m venv venv
@@ -40,14 +42,16 @@ else
 fi
 
 # Activate virtual environment
-echo "\n[4/5] Activating virtual environment..."
+echo ""
+echo "[4/5] Activating virtual environment..."
 if [ -f "venv/bin/activate" ]; then
     source venv/bin/activate
     echo "✓ Virtual environment activated"
 fi
 
 # Install dependencies
-echo "\n[5/5] Installing dependencies..."
+echo ""
+echo "[5/5] Installing dependencies..."
 if [ -f "requirements.txt" ]; then
     pip install -r requirements.txt
     echo "✓ Dependencies installed"
@@ -56,11 +60,14 @@ else
     exit 1
 fi
 
-echo "\n======================================"
+echo ""
+echo "======================================"
 echo "✓ Setup completed successfully!"
 echo "======================================"
-echo "\nTo activate the virtual environment:"
+echo ""
+echo "To activate the virtual environment:"
 echo "  source venv/bin/activate"
-echo "\nTo run the dumper:"
+echo ""
+echo "To run the dumper:"
 echo "  python widevine_dumper.py --help"
 echo ""
